@@ -1,11 +1,11 @@
 :root {
   --bg: #FDF6EC;
-  --terracotta: #E8735A;
+  --terracotta: #F85E39;
   --card-bg: #FFFFFF;
   --text-primary: #1A1A1A;
   --text-secondary: #7a6a5a;
   --tag-bg: #F8C8C0;
-  --tag-color: #C0392B;
+  --tag-color: #F85E39;
   --shadow: 0 2px 16px rgba(80, 40, 20, 0.09);
   --shadow-hover: 0 10px 32px rgba(80, 40, 20, 0.16);
   --radius: 12px;
@@ -57,7 +57,7 @@ header::after {
 
 header h1 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 72px;
+  font-size: 89px;
   font-weight: 400;
   color: #F85E39;
   text-transform: uppercase;
@@ -69,9 +69,9 @@ header h1 {
 
 .header-eyebrow {
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   font-variant: small-caps;
   color: #1B4332;
@@ -202,8 +202,21 @@ header h1 {
 /* ---- Footer ---- */
 footer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 4rem 1.5rem;
+}
+
+.footer-tagline {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--terracotta);
+  text-align: center;
+  margin-top: 1.25rem;
 }
 
 footer img {
