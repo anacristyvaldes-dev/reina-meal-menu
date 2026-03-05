@@ -93,9 +93,12 @@ function setupFilters() {
       if (filter === "all") {
         renderCards(allMeals);
       } else {
-        const filtered = allMeals.filter(m =>
-          m.tags.toLowerCase().split("|").map(t => t.trim()).includes(filter)
-        );
+        // Support pipe-separated filter values (e.g. "asado|plancha")
+        const filterValues = filter.split("|").map(f => f.trim());
+        const filtered = allMeals.filter(m => {
+          const mealTags = m.tags.toLowerCase().split("|").map(t => t.trim());
+          return filterValues.some(f => mealTags.includes(f));
+        });
         renderCards(filtered);
       }
     });
