@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reina — Menú Semanal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Reina</h1>
+    <p class="header-eyebrow">Menú Semanal</p>
+  </header>
+
+  <main>
+    <div id="filter-bar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <span class="filter-divider"></span>
+      <button class="filter-btn" data-filter="res">Res</button>
+      <button class="filter-btn" data-filter="pollo">Pollo</button>
+      <button class="filter-btn" data-filter="marisco">Marisco</button>
+      <span class="filter-divider"></span>
+      <button class="filter-btn" data-filter="caldo">Caldo</button>
+      <button class="filter-btn" data-filter="asado">Asado</button>
+      <button class="filter-btn" data-filter="frito">Frito</button>
+      <button class="filter-btn" data-filter="pasta">Pasta</button>
+      <button class="filter-btn" data-filter="tostadas">Tostadas</button>
+      <button class="filter-btn" data-filter="guiso">Guiso</button>
+      <button class="filter-btn" data-filter="plancha">Plancha</button>
+      <button class="filter-btn" data-filter="tortilla">Tortilla</button>
+      <button class="filter-btn" data-filter="salsas y papas">Salsas y Papas</button>
+      <button class="filter-btn" data-filter="mayonesa">Mayonesa</button>
+    </div>
+
+    <div id="card-grid">Loading...</div>
+    <div id="error-message" hidden>
+      Could not load the menu. Please try again later.
+    </div>
+  </main>
+
+  <footer>
+    <img src="images/reina-stamp.png" alt="Reina" />
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

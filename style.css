@@ -1,0 +1,232 @@
+:root {
+  --bg: #FDF6EC;
+  --terracotta: #E8735A;
+  --card-bg: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #7a6a5a;
+  --tag-bg: #F8C8C0;
+  --tag-color: #C0392B;
+  --shadow: 0 2px 16px rgba(80, 40, 20, 0.09);
+  --shadow-hover: 0 10px 32px rgba(80, 40, 20, 0.16);
+  --radius: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ---- Header ---- */
+header {
+  position: relative;
+  background: var(--terracotta);
+  text-align: center;
+  padding: 2.75rem 2rem 2.5rem;
+  overflow: hidden;
+}
+
+/* Grain texture */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Editorial inset border */
+header::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  z-index: 1;
+}
+
+header h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.header-eyebrow {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Filter bar ---- */
+#filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.75rem 2.5rem 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.filter-btn {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.28rem 0.75rem;
+  border: 1px solid #E0D5C8;
+  background: #FDF6EC;
+  color: #1A1A1A;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: #F0E6D8;
+  border-color: #C8B8A8;
+}
+
+.filter-btn.active {
+  background: var(--terracotta);
+  color: #FFFFFF;
+  border-color: var(--terracotta);
+}
+
+.filter-divider {
+  width: 1px;
+  height: 18px;
+  background: #E0D5C8;
+  margin: 0 0.15rem;
+  flex-shrink: 0;
+}
+
+/* ---- Grid ---- */
+#card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Loading state */
+#card-grid:not(:has(.meal-card)) {
+  display: block;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+#error-message {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  color: var(--tag-color);
+  font-size: 0.9rem;
+}
+
+/* ---- Card ---- */
+.meal-card {
+  background: var(--card-bg);
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid #E0D5C8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.meal-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ---- Image — full bleed ---- */
+.card-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  background: #EDE0D4;
+}
+
+/* ---- Card body ---- */
+.card-body {
+  padding: 16px;
+  background: #F5F0E8;
+  border-top: 1px solid #E0D5C8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.card-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Footer ---- */
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+footer img {
+  width: 200px;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* ---- Tags ---- */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  font-family: "Inter", sans-serif;
+  font-size: 0.57rem;
+  font-weight: 700;
+  padding: 0.12rem 0.48rem;
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}

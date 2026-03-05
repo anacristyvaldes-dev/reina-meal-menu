@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "meal-menu",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/anacristinavaldesmarcos/Documents/meal-menu"],
+      "port": 3000
+    }
+  ]
+}
