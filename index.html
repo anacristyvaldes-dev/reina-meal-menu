@@ -15,6 +15,30 @@
     <p class="header-eyebrow">¿Qué hay de comer?</p>
   </header>
 
+  <!-- ── Planner Section ── -->
+  <section id="planner-section">
+    <div class="planner-container">
+
+      <div class="planner-header-row">
+        <div class="planner-title-block">
+          <h2 class="planner-heading">Menú Semanal</h2>
+          <p class="planner-meta" id="planner-meta">Cargando...</p>
+        </div>
+        <button id="btn-generate-new" class="planner-btn planner-btn--ghost">Generar Nuevo</button>
+      </div>
+
+      <div id="planner-cards" class="planner-cards">
+        <div class="planner-loading">Generando menú...</div>
+      </div>
+
+      <div class="planner-footer-row">
+        <button id="btn-commit-week"   class="planner-btn planner-btn--primary">Confirmar Semana →</button>
+        <button id="btn-download-week" class="planner-btn planner-btn--outline">Descargar</button>
+      </div>
+
+    </div>
+  </section>
+
   <main>
     <div id="filter-bar">
       <button class="filter-btn active" data-filter="all">Todos</button>
@@ -43,6 +67,7 @@
     <img src="images/reina-stamp.png" alt="Reina" />
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="app.js" defer></script>
 </body>
 </html>
