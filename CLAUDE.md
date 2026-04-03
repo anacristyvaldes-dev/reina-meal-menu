@@ -5,8 +5,8 @@ A family meal planning web app. Cristy curates a catalog of ~37 Mexican home mea
 
 ## Stack
 - **Vanilla JavaScript** with ES modules — no React, no framework
-- **Vite** for dev server, bundling, and PWA (future)
-- **HTML / CSS / JS** — src/modules/ for JS, src/styles/ for CSS
+- **Tailwind CSS v4** — design system defined in src/styles/main.css @theme block
+- **Vite** for dev server, bundling, Tailwind plugin, and PWA (future)
 - **Data:** Local JSON files (src/data/meals.json), not a database
 - **Hosting:** Vercel via GitHub (anacristyvaldes-dev/reina-meal-menu)
 
@@ -44,13 +44,14 @@ A family meal planning web app. Cristy curates a catalog of ~37 Mexican home mea
 - src/modules/groceries.js — grocery list builder (Phase 1)
 - src/data/meals.json — 37 meals, migrated from Google Sheets
 - src/data/staples.json — kitchen staples (Phase 1)
-- src/styles/ — CSS split by section (base, header, filters, cards, planner, footer)
+- src/styles/main.css — Tailwind imports + @theme design tokens + custom CSS for pseudo-elements
 - public/images/ — 54 meal photos, matched by slug
 - docs/ — architecture, decisions, constraints, data model
 
 ## Prohibitions
-- Do NOT add a CSS framework (Tailwind, Bootstrap, etc.)
-- Do NOT switch to React or any UI framework
-- Do NOT change the visual design (fonts, colors, card style) without explicit approval
+- Do NOT switch to React or any UI framework (vanilla JS + Tailwind is the stack)
+- Do NOT add Bootstrap or other CSS frameworks — Tailwind is the design system
+- Do NOT write custom CSS when a Tailwind utility class exists — use utilities first
+- Do NOT change brand tokens (colors, fonts) without explicit approval — edit @theme in main.css
 - Do NOT re-add Google Sheets as a data source
 - Do NOT hardcode filter buttons in HTML — they must be generated from data

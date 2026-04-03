@@ -5,20 +5,24 @@ import { nameToImagePath, filterMeals, getFilterOptions, getAvailableMeals } fro
  */
 function createCard(meal) {
   const article = document.createElement("article");
-  article.className = "meal-card";
+  article.className =
+    "meal-card flex flex-col bg-card-bg border border-border overflow-hidden";
 
   const imgPath = nameToImagePath(meal.proteina);
 
   const tags = [meal.tipoDePlatillo, meal.tipoProteina].filter(Boolean);
   const tagHTML = tags
-    .map((tag) => `<span class="tag">${tag}</span>`)
+    .map(
+      (tag) =>
+        `<span class="inline-block font-body text-[0.57rem] font-bold px-2 py-0.5 rounded-full bg-tag-bg text-tag-color uppercase tracking-wide">${tag}</span>`
+    )
     .join("");
 
   article.innerHTML = `
-    <img class="card-img" src="${imgPath}" alt="${meal.proteina}" loading="lazy">
-    <div class="card-body">
-      <h2 class="card-name">${meal.proteina}</h2>
-      <div class="card-tags">${tagHTML}</div>
+    <img class="w-full aspect-[3/2] object-cover block bg-placeholder" src="${imgPath}" alt="${meal.proteina}" loading="lazy">
+    <div class="p-4 bg-card-body border-t border-border flex flex-col gap-2 flex-1">
+      <h2 class="font-label text-[1.05rem] font-normal leading-tight text-text-primary uppercase tracking-wide">${meal.proteina}</h2>
+      <div class="flex flex-wrap gap-1.5 mt-auto">${tagHTML}</div>
     </div>
   `;
 
@@ -48,23 +52,20 @@ export function setupFilters(allMeals) {
 
   const { proteins, dishTypes } = getFilterOptions(allMeals);
 
-  // "Todos" button
+  // "Todos" button — starts active
   const allBtn = createFilterButton("Todos", "all");
-  allBtn.classList.add("active");
+  setActive(allBtn, true);
   bar.appendChild(allBtn);
 
-  // Divider
   bar.appendChild(createDivider());
 
   // Protein filters
   proteins.forEach((p) => {
     const label = p.charAt(0).toUpperCase() + p.slice(1);
-    // Pluralize "marisco" → "Mariscos"
     const displayLabel = p === "marisco" ? "Mariscos" : label;
     bar.appendChild(createFilterButton(displayLabel, p));
   });
 
-  // Divider
   bar.appendChild(createDivider());
 
   // Dish type filters
@@ -74,20 +75,33 @@ export function setupFilters(allMeals) {
   });
 
   // Wire click handlers
-  const buttons = bar.querySelectorAll(".filter-btn");
+  const buttons = bar.querySelectorAll("[data-filter]");
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
+      buttons.forEach((b) => setActive(b, false));
+      setActive(btn, true);
       const filtered = filterMeals(getAvailableMeals(), btn.dataset.filter);
       renderCards(filtered);
     });
   });
 }
 
+const BASE_CLASSES =
+  "font-label text-[0.78rem] font-normal uppercase tracking-wide py-1 px-3 border cursor-pointer whitespace-nowrap transition-colors duration-100";
+const INACTIVE_CLASSES = "border-border bg-bg text-text-primary hover:bg-hover-bg hover:border-border-hover";
+const ACTIVE_CLASSES = "bg-terracotta text-white border-terracotta";
+
+function setActive(btn, active) {
+  if (active) {
+    btn.className = `${BASE_CLASSES} ${ACTIVE_CLASSES}`;
+  } else {
+    btn.className = `${BASE_CLASSES} ${INACTIVE_CLASSES}`;
+  }
+}
+
 function createFilterButton(label, filterValue) {
   const btn = document.createElement("button");
-  btn.className = "filter-btn";
+  btn.className = `${BASE_CLASSES} ${INACTIVE_CLASSES}`;
   btn.dataset.filter = filterValue;
   btn.textContent = label;
   return btn;
@@ -95,6 +109,6 @@ function createFilterButton(label, filterValue) {
 
 function createDivider() {
   const div = document.createElement("span");
-  div.className = "filter-divider";
+  div.className = "w-px h-[18px] bg-border mx-0.5 shrink-0";
   return div;
 }

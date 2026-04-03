@@ -6,29 +6,37 @@
   <title>Reina — Menú Semanal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <h1>Reina</h1>
-    <p class="header-eyebrow">¿Qué hay de comer?</p>
+
+  <!-- ── Header ── -->
+  <header class="header-grain relative bg-yellow-green text-center py-11 px-8 overflow-hidden">
+    <h1 class="font-display text-[89px] font-normal text-terracotta uppercase tracking-widest leading-none relative z-2">Reina</h1>
+    <p class="font-body text-xs font-semibold tracking-[0.34em] uppercase text-green-dark mt-2.5 relative z-2">¿Qué hay de comer?</p>
   </header>
 
   <!-- Planner section — Phase 2 -->
 
   <main>
-    <div id="filter-bar">
+    <!-- ── Filter bar ── -->
+    <div id="filter-bar" class="flex flex-wrap items-center gap-1.5 pt-7 px-6 sm:px-10 max-w-[1440px] mx-auto">
       <!-- Filters generated dynamically from meal data -->
     </div>
 
-    <div id="card-grid">Cargando...</div>
-    <div id="error-message" hidden>
+    <!-- ── Card grid ── -->
+    <div id="card-grid" class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-8 px-6 sm:px-10 py-12 max-w-[1440px] mx-auto">
+      Cargando...
+    </div>
+
+    <div id="error-message" hidden class="text-center py-16 px-6 text-terracotta text-sm">
       No se pudo cargar el menú. Intenta de nuevo.
     </div>
   </main>
 
-  <footer>
-    <img src="/images/reina-stamp.png" alt="Reina" />
+  <!-- ── Footer ── -->
+  <footer class="flex flex-col items-center py-16 px-6">
+    <img src="/images/reina-stamp.png" alt="Reina" class="w-[200px] block mix-blend-multiply" />
   </footer>
 
   <script type="module" src="/src/main.js"></script>

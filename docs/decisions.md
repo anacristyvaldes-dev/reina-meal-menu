@@ -1,5 +1,11 @@
 # Reina Design Decisions
 
+## 2026-04-03 — Tailwind CSS v4
+**Decision:** Add Tailwind CSS, replace hand-written CSS partials.
+**Why:** The original CSS had inconsistent spacing (0.57rem, 0.68rem, 0.7rem, 0.78rem in different places) and font sizes with no scale. Tailwind enforces a constraint system — you pick from a defined scale, which IS the design system. Better for: future phases (groceries, planner), consistency, and other contributors understanding the code.
+**What changed:** 6 CSS files → 1 `main.css` with `@theme` tokens. All styling via Tailwind utility classes in HTML/JS. Custom CSS only for pseudo-elements (header grain texture, inset border).
+**Not added:** React, shadcn/ui. Vanilla JS is sufficient for Reina's complexity. React evaluated for Phase 5+.
+
 ## 2026-04-03 — Rebuild decision
 **Decision:** Start fresh with Vite scaffold, port code module by module.
 **Why:** Old codebase had no build tool, no modules, data from Google Sheets, 12-week pre-generated planner in localStorage. Too many shortcuts to retrofit. Fresh scaffold is faster for 535 lines of JS.

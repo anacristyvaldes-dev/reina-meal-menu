@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@source "../../index.html";
+
+/*
+ * ─── REINA DESIGN SYSTEM ─────────────────────────────────
+ * All brand values in one place. Change here, updates everywhere.
+ */
+
+@theme {
+  /* Colors */
+  --color-bg: #FDF6EC;
+  --color-terracotta: #F85E39;
+  --color-terracotta-dark: #d94f2f;
+  --color-yellow-green: #E0D857;
+  --color-card-bg: #FFFFFF;
+  --color-card-body: #F5F0E8;
+  --color-section-bg: #F5F0E8;
+  --color-border: #E0D5C8;
+  --color-border-hover: #C8B8A8;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #7a6a5a;
+  --color-tag-bg: #F2D9D0;
+  --color-tag-color: #F85E39;
+  --color-green-dark: #1B4332;
+  --color-placeholder: #EDE0D4;
+  --color-hover-bg: #F0E6D8;
+
+  /* Fonts */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-label: "Barlow Condensed", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/*
+ * ─── BASE ─────────────────────────────────────────────────
+ * Tailwind v4 includes Preflight (reset) automatically.
+ * Only add body-level defaults here.
+ */
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/*
+ * ─── HEADER ───────────────────────────────────────────────
+ * Grain texture + editorial inset border via pseudo-elements.
+ * These can't be done with utility classes alone.
+ */
+
+.header-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header-grain::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(27, 67, 50, 0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/*
+ * ─── CARD GRID LOADING STATE ──────────────────────────────
+ */
+
+#card-grid:not(:has(.meal-card)) {
+  display: block;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+/*
+ * ─── CARD HOVER ───────────────────────────────────────────
+ */
+
+.meal-card {
+  transition: transform 0.18s ease;
+}
+
+.meal-card:hover {
+  transform: translateY(-4px);
+}

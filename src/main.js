@@ -1,10 +1,5 @@
-// Styles
-import "./styles/base.css";
-import "./styles/header.css";
-import "./styles/filters.css";
-import "./styles/cards.css";
-import "./styles/planner.css";
-import "./styles/footer.css";
+// Styles — Tailwind + design system
+import "./styles/main.css";
 
 // Modules
 import { getAvailableMeals } from "./modules/meals.js";
