@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "meal-menu",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "/Users/anacristinavaldesmarcos/Documents/meal-menu"],
-      "port": 3000
+      "name": "reina-dev",
+      "runtimeExecutable": "/usr/local/bin/node",
+      "runtimeArgs": ["node_modules/.bin/vite", "--host"],
+      "port": 5173
     }
   ]
 }

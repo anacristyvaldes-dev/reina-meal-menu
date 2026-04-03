@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -15,59 +14,23 @@
     <p class="header-eyebrow">¿Qué hay de comer?</p>
   </header>
 
-  <!-- ── Planner Section ── -->
-  <section id="planner-section">
-    <div class="planner-container">
-
-      <div class="planner-header-row">
-        <div class="planner-title-block">
-          <h2 class="planner-heading">Menú Semanal</h2>
-          <p class="planner-meta" id="planner-meta">Cargando...</p>
-        </div>
-        <button id="btn-generate-new" class="planner-btn planner-btn--ghost">Generar Nuevo</button>
-      </div>
-
-      <div id="planner-cards" class="planner-cards">
-        <div class="planner-loading">Generando menú...</div>
-      </div>
-
-      <div class="planner-footer-row">
-        <button id="btn-commit-week"   class="planner-btn planner-btn--primary">Confirmar Semana →</button>
-        <button id="btn-download-week" class="planner-btn planner-btn--outline">Descargar</button>
-      </div>
-
-    </div>
-  </section>
+  <!-- Planner section — Phase 2 -->
 
   <main>
     <div id="filter-bar">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <span class="filter-divider"></span>
-      <button class="filter-btn" data-filter="res">Res</button>
-      <button class="filter-btn" data-filter="pollo">Pollo</button>
-      <button class="filter-btn" data-filter="marisco">Mariscos</button>
-      <span class="filter-divider"></span>
-      <button class="filter-btn" data-filter="caldo">Caldo</button>
-      <button class="filter-btn" data-filter="asado|plancha">Plancha</button>
-      <button class="filter-btn" data-filter="frito">Frito</button>
-      <button class="filter-btn" data-filter="pasta">Pasta</button>
-      <button class="filter-btn" data-filter="tostadas">Tostadas</button>
-      <button class="filter-btn" data-filter="guiso">Guiso</button>
-      <button class="filter-btn" data-filter="tortilla">Tortilla</button>
-      <button class="filter-btn" data-filter="salsas y papas">Salsas y Papas</button>
+      <!-- Filters generated dynamically from meal data -->
     </div>
 
-    <div id="card-grid">Loading...</div>
+    <div id="card-grid">Cargando...</div>
     <div id="error-message" hidden>
-      Could not load the menu. Please try again later.
+      No se pudo cargar el menú. Intenta de nuevo.
     </div>
   </main>
 
   <footer>
-    <img src="images/reina-stamp.png" alt="Reina" />
+    <img src="/images/reina-stamp.png" alt="Reina" />
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="app.js" defer></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

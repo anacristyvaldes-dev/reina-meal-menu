@@ -1,0 +1,25 @@
+:root {
+  --bg: #FDF6EC;
+  --terracotta: #F85E39;
+  --card-bg: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #7a6a5a;
+  --tag-bg: #F2D9D0;
+  --tag-color: #F85E39;
+  --shadow: 0 2px 16px rgba(80, 40, 20, 0.09);
+  --shadow-hover: 0 10px 32px rgba(80, 40, 20, 0.16);
+  --radius: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+}

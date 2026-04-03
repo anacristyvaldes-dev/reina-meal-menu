@@ -1,0 +1,198 @@
+/* ── ProductCard ─────────────────────────────────────────── */
+
+.pc-card {
+  width: 375px;
+  background: #fff;
+  font-family: "GraphikETSY", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #222;
+  overflow: hidden;
+}
+
+/* ── Image ───────────────────────────────────────────────── */
+
+.pc-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f5f0eb;
+}
+
+.pc-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Etsy's Pick badge */
+.pc-etsy-pick-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(34, 34, 34, 0.75);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.pc-etsy-pick-badge svg {
+  flex-shrink: 0;
+}
+
+/* Dot pagination */
+.pc-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.pc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.pc-dot--active {
+  background: #fff;
+}
+
+/* ── Info block ──────────────────────────────────────────── */
+
+.pc-info {
+  padding: 14px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Price */
+.pc-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.pc-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: -0.3px;
+}
+
+.pc-tax-note {
+  font-size: 13px;
+  color: #595959;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+/* Title */
+.pc-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 4px;
+  line-height: 1.4;
+  /* truncate to one line like the design */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Seller row */
+.pc-seller-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.pc-seller {
+  font-size: 14px;
+  color: #222;
+  line-height: 1.4;
+}
+
+/* Star rating */
+.pc-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.pc-stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.pc-review-count {
+  font-size: 13px;
+  color: #595959;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pc-review-count:hover {
+  color: #222;
+}
+
+/* ── CTA Buttons ─────────────────────────────────────────── */
+
+.pc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pc-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s ease;
+  letter-spacing: 0.1px;
+}
+
+.pc-btn:active {
+  opacity: 0.85;
+}
+
+/* "Add to cart" — filled dark */
+.pc-btn--primary {
+  background: #222;
+  color: #fff;
+}
+
+.pc-btn--primary:hover {
+  background: #111;
+}
+
+/* "View item options" — outline */
+.pc-btn--secondary {
+  background: #fff;
+  color: #222;
+  border: 2px solid #d4d4d4;
+}
+
+.pc-btn--secondary:hover {
+  border-color: #aaa;
+}
