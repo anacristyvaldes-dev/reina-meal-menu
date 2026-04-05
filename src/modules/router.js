@@ -1,7 +1,9 @@
 /**
  * Simple hash-based router with bottom tab bar.
  * Pages are toggled via [data-page] sections in the HTML.
+ * Special route: #super?items=id1,id2 renders a standalone shopper view.
  */
+import { renderSharedShopperView } from "./grocery-views.js";
 
 const TABS = [
   {
@@ -60,9 +62,38 @@ function getActiveTab() {
 
 /**
  * Handle route changes: toggle page visibility and tab active state.
+ * Special case: #super?items=id1,id2 renders standalone shopper view.
  */
 function onRouteChange() {
+  const hash = window.location.hash;
+
+  // Check for shared shopper link: #super?items=id1,id2
+  if (hash.startsWith("#super?items=")) {
+    const itemIds = hash.replace("#super?items=", "").split(",").filter(Boolean);
+    if (itemIds.length > 0) {
+      // Hide all pages, show the super page
+      document.querySelectorAll("[data-page]").forEach((el) => {
+        el.hidden = el.dataset.page !== "super";
+      });
+      // Hide tab bar — shopper doesn't need navigation
+      document.getElementById("tab-bar").hidden = true;
+      // Render the shared shopper view
+      const superPage = document.querySelector('[data-page="super"]');
+      if (superPage) {
+        superPage.hidden = false;
+        superPage.innerHTML = "";
+        renderSharedShopperView(superPage, itemIds);
+      }
+      window.scrollTo(0, 0);
+      return;
+    }
+  }
+
+  // Normal tab routing
   const activeId = getActiveTab();
+
+  // Show tab bar (in case coming back from #super)
+  document.getElementById("tab-bar").hidden = false;
 
   // Toggle page sections
   document.querySelectorAll("[data-page]").forEach((el) => {

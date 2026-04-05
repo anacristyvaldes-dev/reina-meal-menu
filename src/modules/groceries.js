@@ -117,6 +117,24 @@ export function setItemCheck(itemId, status) {
 }
 
 /**
+ * Get items by an array of IDs (for shared shopper links).
+ * Returns items with storeSection preserved, ordered by store section.
+ */
+export function getItemsByIds(ids) {
+  const idSet = new Set(ids);
+  const items = staplesData.items.filter((item) => idSet.has(item.id));
+
+  // Sort by store section order
+  const sectionOrder = staplesData.storeSections;
+  items.sort(
+    (a, b) =>
+      sectionOrder.indexOf(a.storeSection) - sectionOrder.indexOf(b.storeSection)
+  );
+
+  return items;
+}
+
+/**
  * Reset all checks (start fresh for a new week).
  */
 export function resetAllChecks() {
