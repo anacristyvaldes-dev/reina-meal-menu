@@ -95,3 +95,12 @@ body {
 .meal-card:hover {
   transform: translateY(-4px);
 }
+
+/*
+ * ─── BOTTOM TAB BAR ──────────────────────────────────────
+ * Safe area padding for iOS notch devices.
+ */
+
+.tab-bar-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
