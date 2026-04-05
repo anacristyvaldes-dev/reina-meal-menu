@@ -1,5 +1,10 @@
 # Reina Design Decisions
 
+## 2026-04-05 — Frijoles/lentejas slot constraint refined
+**Decision:** Frijoles/lentejas meals go on Wednesday (preferred) or Friday (fallback). Never Monday.
+**Why:** All frijoles/lentejas meals require remojo (overnight soaking). Helpers are there Mon-Fri but NOT Sunday night. Monday's meal would need Sunday night soaking with no one to do it. Wednesday = helper soaks Tuesday night. Friday = helper soaks Thursday night.
+**Data confirmation:** Every meal with `remojo: true` is exactly the set of meals with frijoles or lentejas in their complementos. They're the same constraint.
+
 ## 2026-04-03 — Tailwind CSS v4
 **Decision:** Add Tailwind CSS, replace hand-written CSS partials.
 **Why:** The original CSS had inconsistent spacing (0.57rem, 0.68rem, 0.7rem, 0.78rem in different places) and font sizes with no scale. Tailwind enforces a constraint system — you pick from a defined scale, which IS the design system. Better for: future phases (groceries, planner), consistency, and other contributors understanding the code.

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "activeVersion": "A",
+  "versions": [
+    {
+      "id": "A",
+      "label": "Menú A",
+      "description": "Chilaquiles, pita+hummus, jicama snacks, limonada",
+      "breakfastHighlights": ["Chilaquiles con totopos", "Pita con hummus/jocoque", "Jícama y verdura snack"],
+      "dinnerHighlights": ["Fideos (si hubo pollo cocido)", "Quesadillas con queso para derretir"],
+      "notes": "Semana con limonada"
+    },
+    {
+      "id": "B",
+      "label": "Menú B",
+      "description": "Tlacoyos/arepas, salmón ahumado, tomatitos cherry, berries",
+      "breakfastHighlights": ["Tlacoyos / zopes / arepas", "Pan con jamón de pavo / panela", "Salmón ahumado"],
+      "dinnerHighlights": ["Fideos (si hubo pollo cocido)", "Tamales"],
+      "notes": "Semana con otra agua (no limonada)"
+    }
+  ]
+}
