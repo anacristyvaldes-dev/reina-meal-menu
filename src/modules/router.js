@@ -100,45 +100,67 @@ function onRouteChange() {
     el.hidden = el.dataset.page !== activeId;
   });
 
-  // Update tab bar active states
-  document.querySelectorAll("#tab-bar a[data-tab]").forEach((link) => {
-    const isActive = link.dataset.tab === activeId;
-    if (isActive) {
-      link.className = TAB_ACTIVE;
-    } else {
-      link.className = TAB_INACTIVE;
-    }
-  });
+  // Update tab bar active states (both mobile + desktop links)
+  TABS.forEach((tab) => setTabActive(tab.id, activeId));
 
   // Scroll to top on page switch
   window.scrollTo(0, 0);
 }
 
 // Tab style constants (same pattern as cards.js filter buttons)
-const TAB_BASE =
-  "flex flex-col items-center justify-center gap-0.5 flex-1 h-full no-underline transition-colors duration-100";
-const TAB_ACTIVE = `${TAB_BASE} text-terracotta`;
-const TAB_INACTIVE = `${TAB_BASE} text-text-secondary`;
+// Mobile: vertical icon+label stack; Desktop: horizontal text links
+const TAB_BASE_MOBILE =
+  "flex flex-col items-center justify-center gap-0.5 flex-1 h-full no-underline transition-colors duration-100 md:hidden";
+const TAB_BASE_DESKTOP =
+  "hidden md:flex items-center gap-2 no-underline transition-colors duration-100 font-label text-sm font-bold uppercase tracking-wide py-2 px-4 border-b-2";
+
+const TAB_ACTIVE_MOBILE = `${TAB_BASE_MOBILE} text-terracotta`;
+const TAB_INACTIVE_MOBILE = `${TAB_BASE_MOBILE} text-text-secondary`;
+const TAB_ACTIVE_DESKTOP = `${TAB_BASE_DESKTOP} border-terracotta text-terracotta`;
+const TAB_INACTIVE_DESKTOP = `${TAB_BASE_DESKTOP} border-transparent text-text-secondary hover:text-text-primary`;
 
 /**
- * Render the fixed bottom tab bar.
+ * Apply active/inactive classes to both mobile and desktop links for a tab.
+ */
+function setTabActive(tabId, activeId) {
+  const isActive = tabId === activeId;
+  const mobileLink = document.querySelector(`#tab-bar a[data-tab="${tabId}"][data-device="mobile"]`);
+  const desktopLink = document.querySelector(`#tab-bar a[data-tab="${tabId}"][data-device="desktop"]`);
+  if (mobileLink) mobileLink.className = isActive ? TAB_ACTIVE_MOBILE : TAB_INACTIVE_MOBILE;
+  if (desktopLink) desktopLink.className = isActive ? TAB_ACTIVE_DESKTOP : TAB_INACTIVE_DESKTOP;
+}
+
+/**
+ * Render the tab bar — bottom on mobile, top horizontal on desktop.
  */
 function renderTabBar() {
   const nav = document.getElementById("tab-bar");
   if (!nav) return;
 
+  // Container: fixed bottom on mobile, sticky top on desktop
   nav.className =
-    "fixed bottom-0 left-0 right-0 z-50 bg-card-bg border-t border-border flex items-center h-16 tab-bar-safe";
+    "fixed bottom-0 left-0 right-0 z-50 bg-card-bg border-t border-border flex items-center h-16 tab-bar-safe md:static md:border-t-0 md:border-b md:h-auto md:justify-center md:gap-2 md:py-0 md:bg-bg";
 
   TABS.forEach((tab) => {
-    const link = document.createElement("a");
-    link.href = tab.hash;
-    link.dataset.tab = tab.id;
-    link.className = TAB_INACTIVE;
-    link.innerHTML = `
+    // Mobile link (icon + label, vertical)
+    const mobileLink = document.createElement("a");
+    mobileLink.href = tab.hash;
+    mobileLink.dataset.tab = tab.id;
+    mobileLink.dataset.device = "mobile";
+    mobileLink.className = TAB_INACTIVE_MOBILE;
+    mobileLink.innerHTML = `
       ${tab.icon}
       <span class="font-label text-[0.6rem] font-bold uppercase tracking-wide leading-none">${tab.label}</span>
     `;
-    nav.appendChild(link);
+    nav.appendChild(mobileLink);
+
+    // Desktop link (text only, horizontal)
+    const desktopLink = document.createElement("a");
+    desktopLink.href = tab.hash;
+    desktopLink.dataset.tab = tab.id;
+    desktopLink.dataset.device = "desktop";
+    desktopLink.className = TAB_INACTIVE_DESKTOP;
+    desktopLink.textContent = tab.label;
+    nav.appendChild(desktopLink);
   });
 }

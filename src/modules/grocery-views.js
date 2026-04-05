@@ -64,7 +64,7 @@ export function renderSharedShopperView(container, itemIds) {
 
   for (const [section, sectionItems] of Object.entries(grouped)) {
     const sectionEl = document.createElement("div");
-    sectionEl.className = "mb-6";
+    sectionEl.className = "mb-6 break-inside-avoid";
     sectionEl.innerHTML = `
       <h3 class="font-label text-sm font-bold uppercase tracking-wide text-text-secondary mb-3 pb-1.5 border-b border-border">${section}</h3>
     `;
@@ -182,10 +182,10 @@ function renderGrocerySection() {
 
   container.appendChild(header);
 
-  // Content area
+  // Content area — multi-column on desktop
   const content = document.createElement("div");
   content.id = "grocery-content";
-  content.className = "max-w-[1440px] mx-auto px-6 sm:px-10 pb-10";
+  content.className = "max-w-[1440px] mx-auto px-6 sm:px-10 pb-10 md:columns-2 lg:columns-3 md:gap-8";
   container.appendChild(content);
 
   if (currentTab === "helper") {
@@ -246,7 +246,7 @@ function renderHelperView(container, version) {
   // Groups
   for (const [zone, items] of Object.entries(groups)) {
     const section = document.createElement("div");
-    section.className = "mb-6";
+    section.className = "mb-6 break-inside-avoid";
 
     section.innerHTML = `
       <h3 class="font-label text-sm font-bold uppercase tracking-wide text-text-secondary mb-3 pb-1.5 border-b border-border">${zone}</h3>
@@ -345,7 +345,7 @@ function renderShopperView(container, version) {
 
   for (const [section, items] of Object.entries(groups)) {
     const sectionEl = document.createElement("div");
-    sectionEl.className = "mb-6";
+    sectionEl.className = "mb-6 break-inside-avoid";
 
     sectionEl.innerHTML = `
       <h3 class="font-label text-sm font-bold uppercase tracking-wide text-text-secondary mb-3 pb-1.5 border-b border-border">${section}</h3>

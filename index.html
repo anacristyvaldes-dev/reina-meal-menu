@@ -8,13 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body class="pb-16">
+<body class="pb-16 md:pb-0">
 
   <!-- ── Header (always visible) ── -->
   <header class="header-grain relative bg-yellow-green text-center py-11 px-8 overflow-hidden">
     <h1 class="font-display text-[89px] font-normal text-terracotta uppercase tracking-widest leading-none relative z-2">Reina</h1>
     <p class="font-body text-xs font-semibold tracking-[0.34em] uppercase text-green-dark mt-2.5 relative z-2">¿Qué hay de comer?</p>
   </header>
+
+  <!-- ── Desktop nav bar (rendered by router.js, mobile version is fixed at bottom) ── -->
+  <nav id="tab-bar"></nav>
 
   <!-- ── Page: Catálogo ── -->
   <section data-page="catalogo">
@@ -47,9 +50,6 @@
       <p class="font-body text-sm text-text-secondary mt-4">Próximamente</p>
     </div>
   </section>
-
-  <!-- ── Bottom tab bar (rendered by router.js) ── -->
-  <nav id="tab-bar"></nav>
 
   <script type="module" src="/src/main.js"></script>
 </body>
