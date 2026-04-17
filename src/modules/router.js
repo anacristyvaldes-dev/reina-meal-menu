@@ -21,9 +21,9 @@ const TABS = [
     id: "lista",
     hash: "#lista",
     label: "Lista",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/>
-      <path d="M4 6.5l1.5 1.5 3-3"/><path d="M4 12.5l1.5 1.5 3-3"/><path d="M4 18.5l1.5 1.5 3-3"/>
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 6h9"/><path d="M11 12h9"/><path d="M11 18h9"/>
+      <path d="M4 5.5l1.5 1.5 3-3"/><path d="M4 11.5l1.5 1.5 3-3"/><path d="M4 17.5l1.5 1.5 3-3"/>
     </svg>`,
   },
   {
